@@ -6,3 +6,5 @@ node_modules
 *.tsbuildinfo
 .next-dev.log
 .next-dev.err.log
+
+.vercel
