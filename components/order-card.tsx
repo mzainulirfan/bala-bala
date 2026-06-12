@@ -12,7 +12,7 @@ export function OrderCard({ order, href }: { order: Order; href?: string }) {
         </div>
         <div className="text-right">
           <span className="pill">{statusLabel(order.status)}</span>
-          <p className={`mt-2 text-sm font-black ${order.payment_status === "paid" ? "text-leaf" : "text-sambal"}`}>
+          <p className={`mt-2 text-sm font-black ${order.payment_status === "paid" ? "text-green-700" : "text-red-700"}`}>
             {order.payment_status === "paid" ? "Sudah bayar" : "Belum bayar"}
           </p>
         </div>

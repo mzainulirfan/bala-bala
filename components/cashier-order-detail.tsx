@@ -38,7 +38,7 @@ export function CashierOrderDetail({ initialOrder }: { initialOrder: Order }) {
           </div>
           <div className="space-y-2 text-right">
             <p className="pill text-sm">{statusLabel(order.status)}</p>
-            <p className={`text-sm font-black ${order.payment_status === "paid" ? "text-leaf" : "text-sambal"}`}>
+            <p className={`text-sm font-black ${order.payment_status === "paid" ? "text-green-700" : "text-red-700"}`}>
               {order.payment_status === "paid" ? "Sudah bayar" : "Belum bayar"}
             </p>
           </div>
@@ -75,7 +75,7 @@ export function CashierOrderDetail({ initialOrder }: { initialOrder: Order }) {
           onClick={() => {
             if (window.confirm("Batalkan pesanan ini?")) run(() => updateOrderStatusAction(order.id, "cancelled"));
           }}
-          className="inline-flex items-center justify-center rounded-md bg-sambal px-4 py-3 font-bold text-white transition hover:bg-red-800 disabled:bg-stone-300"
+          className="inline-flex items-center justify-center rounded-md bg-red-700 px-4 py-3 font-bold text-white transition hover:bg-red-800 disabled:bg-stone-300"
         >
           Batalkan
         </button>

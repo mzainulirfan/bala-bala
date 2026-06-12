@@ -40,7 +40,7 @@ select {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-3 font-bold text-white shadow-sm transition hover:bg-sambal disabled:bg-stone-300 disabled:shadow-none;
+    @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-3 font-bold text-white shadow-sm transition hover:bg-red-700 disabled:bg-stone-300 disabled:shadow-none;
   }
 
   .btn-secondary {

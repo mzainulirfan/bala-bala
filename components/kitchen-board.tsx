@@ -71,7 +71,7 @@ export function KitchenBoard({ initialOrders }: { initialOrders: Order[] }) {
                 <button
                   disabled={isPending || order.status !== "processing"}
                   onClick={() => update(order.id, "ready")}
-                  className="inline-flex items-center justify-center rounded-md bg-leaf px-4 py-3 font-bold text-white shadow-sm transition hover:bg-green-800 disabled:bg-stone-300"
+                  className="inline-flex items-center justify-center rounded-md bg-green-700 px-4 py-3 font-bold text-white shadow-sm transition hover:bg-green-800 disabled:bg-stone-300"
                 >
                   Siap Diambil
                 </button>
