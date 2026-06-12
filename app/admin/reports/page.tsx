@@ -15,8 +15,9 @@ export default async function ReportsPage() {
         <Metric label="Selesai" value={String(report.completedOrders)} />
         <Metric label="Dibatalkan" value={String(report.cancelledOrders)} />
       </div>
-      <section className="mt-6 rounded-lg border border-orange-200 bg-white p-4">
-        <h2 className="text-lg font-bold">Menu Terlaris</h2>
+      <section className="surface mt-6 p-4">
+        <p className="section-title">Penjualan</p>
+        <h2 className="mt-1 text-xl font-black">Menu Terlaris</h2>
         <div className="mt-3 divide-y divide-orange-100">
           {report.bestSellers.length ? (
             report.bestSellers.map((item) => (
@@ -36,7 +37,7 @@ export default async function ReportsPage() {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-orange-200 bg-white p-4">
+    <div className="surface p-4">
       <p className="text-sm text-stone-600">{label}</p>
       <p className="mt-2 text-2xl font-black">{value}</p>
     </div>

@@ -33,7 +33,7 @@ export function CashierDashboard({ initialOrders }: { initialOrders: Order[] }) 
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
+      <div className="surface flex flex-wrap gap-2 p-2">
         {filters.map((item) => (
           <button
             key={item.value}
@@ -41,14 +41,14 @@ export function CashierDashboard({ initialOrders }: { initialOrders: Order[] }) 
               setFilter(item.value);
               refresh(item.value);
             }}
-            className={`rounded-md px-3 py-2 text-sm font-bold ${
-              filter === item.value ? "bg-brand text-white" : "bg-white text-stone-700"
+            className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+              filter === item.value ? "bg-ink text-white" : "bg-transparent text-stone-700 hover:bg-orange-50"
             }`}
           >
             {item.label}
           </button>
         ))}
-        <button onClick={() => refresh()} className="rounded-md border border-orange-200 bg-white px-3 py-2 text-sm font-bold">
+        <button onClick={() => refresh()} className="rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-bold">
           {isPending ? "Refresh..." : "Refresh"}
         </button>
       </div>

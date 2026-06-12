@@ -27,7 +27,7 @@ export default async function AdminPage() {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-orange-200 bg-white p-4">
+    <div className="surface p-4">
       <p className="text-sm text-stone-600">{label}</p>
       <p className="mt-2 text-2xl font-black">{value}</p>
     </div>
@@ -36,7 +36,7 @@ function Metric({ label, value }: { label: string; value: string }) {
 
 function AdminLink({ href, title }: { href: string; title: string }) {
   return (
-    <Link href={href} className="rounded-lg border border-orange-200 bg-white p-5 text-lg font-bold shadow-sm">
+    <Link href={href} className="surface flex min-h-28 items-end p-5 text-lg font-black transition hover:-translate-y-0.5">
       {title}
     </Link>
   );

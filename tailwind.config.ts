@@ -5,9 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#1f1a17",
+        ink: "#24130c",
         brand: "#d9480f",
-        cream: "#fff7ed"
+        cream: "#fff8ed",
+        sambal: "#b42318",
+        leaf: "#1f7a4d"
       }
     }
   },

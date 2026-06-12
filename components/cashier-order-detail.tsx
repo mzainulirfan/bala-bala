@@ -26,22 +26,24 @@ export function CashierOrderDetail({ initialOrder }: { initialOrder: Order }) {
 
   return (
     <div className="mx-auto max-w-2xl space-y-4">
-      <Link href="/cashier" className="inline-flex rounded-md border border-orange-200 bg-white px-3 py-2 text-sm font-bold">
+      <Link href="/cashier" className="btn-secondary px-3 py-2 text-sm">
         Kembali
       </Link>
-      <section className="rounded-lg border border-orange-200 bg-white p-5 shadow-sm">
+      <section className="surface-strong p-5">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-5xl font-black">{order.queue_number}</p>
+            <p className="text-6xl font-black leading-none">{order.queue_number}</p>
             <h1 className="mt-1 text-2xl font-bold">{order.customer_name}</h1>
             <p className="text-sm text-stone-600">{new Date(order.created_at).toLocaleString("id-ID")}</p>
           </div>
           <div className="space-y-2 text-right">
-            <p className="rounded-full bg-orange-100 px-3 py-1 text-sm font-bold text-brand">{statusLabel(order.status)}</p>
-            <p className="text-sm font-bold">{order.payment_status === "paid" ? "Sudah bayar" : "Belum bayar"}</p>
+            <p className="pill text-sm">{statusLabel(order.status)}</p>
+            <p className={`text-sm font-black ${order.payment_status === "paid" ? "text-leaf" : "text-sambal"}`}>
+              {order.payment_status === "paid" ? "Sudah bayar" : "Belum bayar"}
+            </p>
           </div>
         </div>
-        {order.notes ? <p className="mt-4 rounded-md bg-orange-50 p-3 text-sm">Catatan: {order.notes}</p> : null}
+        {order.notes ? <p className="mt-4 rounded-md border border-orange-200 bg-orange-50 p-3 text-sm">Catatan: {order.notes}</p> : null}
         <ul className="mt-5 divide-y divide-orange-100">
           {order.items.map((item) => (
             <li key={item.id} className="flex justify-between gap-4 py-3">
@@ -64,7 +66,7 @@ export function CashierOrderDetail({ initialOrder }: { initialOrder: Order }) {
         <button
           disabled={isPending || order.payment_status === "paid"}
           onClick={() => run(() => markPaidAction(order.id))}
-          className="rounded-md bg-brand px-4 py-3 font-bold text-white disabled:bg-stone-300"
+          className="btn-primary"
         >
           Tandai Sudah Bayar
         </button>
@@ -73,12 +75,12 @@ export function CashierOrderDetail({ initialOrder }: { initialOrder: Order }) {
           onClick={() => {
             if (window.confirm("Batalkan pesanan ini?")) run(() => updateOrderStatusAction(order.id, "cancelled"));
           }}
-          className="rounded-md bg-red-600 px-4 py-3 font-bold text-white disabled:bg-stone-300"
+          className="inline-flex items-center justify-center rounded-md bg-sambal px-4 py-3 font-bold text-white transition hover:bg-red-800 disabled:bg-stone-300"
         >
           Batalkan
         </button>
       </section>
-      <section className="rounded-lg border border-orange-200 bg-white p-4">
+      <section className="surface p-4">
         <p className="mb-3 font-bold">Ubah status manual</p>
         <div className="flex flex-wrap gap-2">
           {statuses.map((status) => (
@@ -86,7 +88,7 @@ export function CashierOrderDetail({ initialOrder }: { initialOrder: Order }) {
               key={status}
               disabled={isPending || order.status === status}
               onClick={() => run(() => updateOrderStatusAction(order.id, status))}
-              className="rounded-md border border-orange-200 px-3 py-2 text-sm font-bold disabled:bg-orange-100 disabled:text-brand"
+              className="rounded-full border border-orange-200 bg-white px-3 py-2 text-sm font-bold transition hover:bg-orange-50 disabled:bg-orange-100 disabled:text-brand"
             >
               {statusLabel(status)}
             </button>

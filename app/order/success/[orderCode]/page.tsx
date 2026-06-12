@@ -8,12 +8,12 @@ export default async function OrderSuccessPage({ params }: { params: { orderCode
   if (!order) notFound();
 
   return (
-    <main className="min-h-screen bg-cream px-4 py-8">
-      <section className="mx-auto max-w-md rounded-lg border border-orange-200 bg-white p-6 text-center shadow-sm">
-        <p className="text-sm font-semibold uppercase tracking-wide text-brand">Pesanan berhasil</p>
-        <h1 className="mt-3 text-6xl font-black text-ink">{order.queue_number}</h1>
+    <main className="app-shell min-h-screen px-4 py-8">
+      <section className="surface-strong mx-auto max-w-md p-6 text-center">
+        <p className="section-title">Pesanan berhasil</p>
+        <h1 className="mt-4 text-7xl font-black leading-none text-ink">{order.queue_number}</h1>
         <p className="mt-2 text-stone-600">Nomor antrean kamu</p>
-        <div className="mt-6 rounded-md bg-orange-50 p-4 text-left">
+        <div className="mt-6 rounded-md border border-orange-200 bg-orange-50 p-4 text-left">
           <p className="font-bold">{order.customer_name}</p>
           <p className="text-sm text-stone-600">Status: {statusLabel(order.status)}</p>
           <ul className="mt-3 space-y-1 text-sm">
@@ -26,18 +26,18 @@ export default async function OrderSuccessPage({ params }: { params: { orderCode
               </li>
             ))}
           </ul>
-          <div className="mt-3 flex justify-between border-t border-orange-200 pt-3 font-bold">
+          <div className="mt-3 flex justify-between border-t border-orange-200 pt-3 font-black">
             <span>Total</span>
             <span>{formatCurrency(order.total_amount)}</span>
           </div>
         </div>
         <Link
           href={`/track/${order.order_code}`}
-          className="mt-6 inline-flex w-full justify-center rounded-md bg-brand px-4 py-3 font-bold text-white"
+          className="btn-primary mt-6 w-full"
         >
           Cek Status Pesanan
         </Link>
-        <Link href="/order" className="mt-3 inline-flex w-full justify-center rounded-md border border-orange-200 px-4 py-3 font-bold">
+        <Link href="/order" className="btn-secondary mt-3 w-full">
           Buat Pesanan Lagi
         </Link>
       </section>

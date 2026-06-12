@@ -34,9 +34,9 @@ export function KitchenBoard({ initialOrders }: { initialOrders: Order[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
+      <div className="surface flex items-center justify-between gap-3 p-3">
         <p className="text-sm text-stone-600">Pesanan aktif diurutkan dari nomor antrean terkecil.</p>
-        <button onClick={refresh} className="rounded-md border border-orange-200 bg-white px-3 py-2 text-sm font-bold">
+        <button onClick={refresh} className="btn-secondary px-3 py-2 text-sm">
           {isPending ? "Refresh..." : "Refresh"}
         </button>
       </div>
@@ -44,13 +44,13 @@ export function KitchenBoard({ initialOrders }: { initialOrders: Order[] }) {
       {orders.length ? (
         <div className="grid gap-4 lg:grid-cols-2">
           {orders.map((order) => (
-            <article key={order.id} className="rounded-lg border border-orange-200 bg-white p-5 shadow-sm">
+            <article key={order.id} className="surface-strong p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-6xl font-black">{order.queue_number}</p>
+                  <p className="text-7xl font-black leading-none">{order.queue_number}</p>
                   <h2 className="text-xl font-bold">{order.customer_name}</h2>
                 </div>
-                <span className="rounded-full bg-orange-100 px-3 py-2 text-sm font-bold text-brand">{statusLabel(order.status)}</span>
+                <span className="pill py-2 text-sm">{statusLabel(order.status)}</span>
               </div>
               <ul className="mt-5 space-y-2 text-lg font-semibold">
                 {order.items.map((item) => (
@@ -59,19 +59,19 @@ export function KitchenBoard({ initialOrders }: { initialOrders: Order[] }) {
                   </li>
                 ))}
               </ul>
-              {order.notes ? <p className="mt-4 rounded-md bg-orange-50 p-3 text-sm">Catatan: {order.notes}</p> : null}
+              {order.notes ? <p className="mt-4 rounded-md border border-orange-200 bg-orange-50 p-3 text-sm">Catatan: {order.notes}</p> : null}
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <button
                   disabled={isPending || order.status !== "waiting"}
                   onClick={() => update(order.id, "processing")}
-                  className="rounded-md bg-brand px-4 py-3 font-bold text-white disabled:bg-stone-300"
+                  className="btn-primary"
                 >
                   Proses
                 </button>
                 <button
                   disabled={isPending || order.status !== "processing"}
                   onClick={() => update(order.id, "ready")}
-                  className="rounded-md bg-green-700 px-4 py-3 font-bold text-white disabled:bg-stone-300"
+                  className="inline-flex items-center justify-center rounded-md bg-leaf px-4 py-3 font-bold text-white shadow-sm transition hover:bg-green-800 disabled:bg-stone-300"
                 >
                   Siap Diambil
                 </button>

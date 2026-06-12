@@ -8,7 +8,7 @@ export default async function UsersPage() {
 
   return (
     <PageShell title="Kelola User" subtitle="Daftar profil staff. Pembuatan akun Supabase dilakukan dari dashboard Supabase untuk MVP ini." nav={<StaffNav active="admin" />}>
-      <section className="overflow-hidden rounded-lg border border-orange-200 bg-white">
+      <section className="surface overflow-hidden">
         <table className="w-full text-left text-sm">
           <thead className="bg-orange-50">
             <tr>

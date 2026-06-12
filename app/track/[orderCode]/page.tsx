@@ -11,15 +11,15 @@ export default async function TrackOrderPage({ params }: { params: { orderCode: 
   const activeIndex = statusSteps.indexOf(order.status as any);
 
   return (
-    <main className="min-h-screen bg-cream px-4 py-8">
-      <section className="mx-auto max-w-md rounded-lg border border-orange-200 bg-white p-6 shadow-sm">
-        <p className="text-sm font-semibold uppercase tracking-wide text-brand">Status Pesanan</p>
+    <main className="app-shell min-h-screen px-4 py-8">
+      <section className="surface-strong mx-auto max-w-md p-6">
+        <p className="section-title">Status Pesanan</p>
         <div className="mt-3 flex items-end justify-between gap-4">
           <div>
-            <h1 className="text-5xl font-black">{order.queue_number}</h1>
+            <h1 className="text-6xl font-black leading-none">{order.queue_number}</h1>
             <p className="text-stone-600">{order.customer_name}</p>
           </div>
-          <span className="rounded-full bg-orange-100 px-3 py-2 text-sm font-bold text-brand">{statusLabel(order.status)}</span>
+          <span className="pill py-2 text-sm">{statusLabel(order.status)}</span>
         </div>
 
         <div className="mt-6 space-y-3">
@@ -32,7 +32,7 @@ export default async function TrackOrderPage({ params }: { params: { orderCode: 
           {order.status === "cancelled" ? <p className="rounded-md bg-red-50 p-3 font-semibold text-red-700">Pesanan dibatalkan.</p> : null}
         </div>
 
-        <div className="mt-6 rounded-md bg-orange-50 p-4">
+        <div className="mt-6 rounded-md border border-orange-200 bg-orange-50 p-4">
           <ul className="space-y-1 text-sm">
             {order.items.map((item) => (
               <li key={item.id} className="flex justify-between gap-3">
@@ -43,13 +43,13 @@ export default async function TrackOrderPage({ params }: { params: { orderCode: 
               </li>
             ))}
           </ul>
-          <div className="mt-3 flex justify-between border-t border-orange-200 pt-3 font-bold">
+          <div className="mt-3 flex justify-between border-t border-orange-200 pt-3 font-black">
             <span>Total</span>
             <span>{formatCurrency(order.total_amount)}</span>
           </div>
         </div>
 
-        <Link href="/order" className="mt-6 inline-flex w-full justify-center rounded-md border border-orange-200 px-4 py-3 font-bold">
+        <Link href="/order" className="btn-secondary mt-6 w-full">
           Kembali ke Order
         </Link>
       </section>

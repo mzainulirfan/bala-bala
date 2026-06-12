@@ -39,8 +39,9 @@ export function AdminMenu({ initialMenus }: { initialMenus: Menu[] }) {
 
   return (
     <div className="grid gap-5 lg:grid-cols-[360px_1fr]">
-      <section className="rounded-lg border border-orange-200 bg-white p-4">
-        <h2 className="text-lg font-bold">{editing.id ? "Edit Menu" : "Tambah Menu"}</h2>
+      <section className="surface-strong p-4">
+        <p className="section-title">Menu</p>
+        <h2 className="mt-1 text-xl font-black">{editing.id ? "Edit Menu" : "Tambah Menu"}</h2>
         <div className="mt-4 space-y-3">
           <Field label="Nama" value={editing.name} onChange={(value) => setEditing({ ...editing, name: value })} />
           <Field label="Deskripsi" value={editing.description ?? ""} onChange={(value) => setEditing({ ...editing, description: value })} />
@@ -56,11 +57,11 @@ export function AdminMenu({ initialMenus }: { initialMenus: Menu[] }) {
             Habis
           </label>
           {error ? <p className="rounded-md bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p> : null}
-          <button disabled={isPending} onClick={submit} className="w-full rounded-md bg-brand px-4 py-3 font-bold text-white disabled:bg-stone-300">
+          <button disabled={isPending} onClick={submit} className="btn-primary w-full">
             {isPending ? "Menyimpan..." : "Simpan Menu"}
           </button>
           {editing.id ? (
-            <button onClick={() => setEditing(emptyMenu)} className="w-full rounded-md border border-orange-200 px-4 py-3 font-bold">
+            <button onClick={() => setEditing(emptyMenu)} className="btn-secondary w-full">
               Batal Edit
             </button>
           ) : null}
@@ -68,7 +69,7 @@ export function AdminMenu({ initialMenus }: { initialMenus: Menu[] }) {
       </section>
       <section className="space-y-3">
         {menus.map((menu) => (
-          <article key={menu.id} className="rounded-lg border border-orange-200 bg-white p-4 shadow-sm">
+          <article key={menu.id} className="surface p-4">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h3 className="text-lg font-bold">{menu.name}</h3>
@@ -76,7 +77,7 @@ export function AdminMenu({ initialMenus }: { initialMenus: Menu[] }) {
                 <p className="mt-2 font-bold text-brand">{formatCurrency(menu.price)}</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-brand">{menu.is_active ? "Aktif" : "Nonaktif"}</span>
+                <span className="pill">{menu.is_active ? "Aktif" : "Nonaktif"}</span>
                 <span className="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-stone-700">{menu.is_sold_out ? "Habis" : "Tersedia"}</span>
                 <button
                   onClick={() =>
@@ -87,7 +88,7 @@ export function AdminMenu({ initialMenus }: { initialMenus: Menu[] }) {
                       image_url: menu.image_url ?? ""
                     })
                   }
-                  className="rounded-md border border-orange-200 px-3 py-1 text-xs font-bold"
+                  className="rounded-full border border-orange-200 bg-white px-3 py-1 text-xs font-bold hover:bg-orange-50"
                 >
                   Edit
                 </button>
@@ -118,7 +119,7 @@ function Field({
         type={type}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="mt-1 w-full rounded-md border border-orange-200 px-3 py-2 outline-none focus:border-brand"
+        className="field py-2"
       />
     </label>
   );
